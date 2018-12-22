@@ -3,4 +3,4 @@
 #include <string.h>
 #include <math.h>
 
-void out();
+int menu(int n);
