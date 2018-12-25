@@ -8,8 +8,9 @@ typedef struct prepol
 	int coe;
 	int ide;
 	struct prepol *next;
-}pol;
+}pol;//存放系数和指数
 
 int menu(int *n);
 void add(pol **head);
 void printall(pol **head);
+int correction(int *a,int *b);

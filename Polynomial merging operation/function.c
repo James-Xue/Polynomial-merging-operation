@@ -6,14 +6,14 @@ int menu(int *n)
 	if (!*n)
 	{
 		printf("是否开始输入多项式？\n");
-		printf("1.是\n");
+		printf("1.是\t");
 		printf("0.退出\n");
 	}
 	else
 	{
-		printf("是否继续输入多项式？\n");
-		printf("1.继续输入\n");
-		printf("2.结束输入\n");
+		printf("是否继续输入第%d个多项式？\n",*n+1);
+		printf("1.继续输入\t");
+		printf("2.结束输入\t");
 		printf("0.直接退出\n");
 	}
 	scanf("%d", &k);
@@ -27,7 +27,7 @@ void add(pol **head)
 	pol *p, *tail;
 	int a,b;
 	
-	while (~scanf("%dx^%d", &a, &b))
+	while (correction(&a, &b))
 	{
 		tail = *head;
 		p = (pol*)malloc(sizeof(pol));
@@ -70,12 +70,29 @@ void printall(pol **head)
 {
 	pol *p = *head;
 	int i = 0;
+	if (p == NULL)printf("用户未输入。\n");
+	else printf("合并后的结果为：");
 	while (p != NULL)
 	{
 		if (!i)
-			printf("%dx^%d", p->coe, p->ide);
+		{
+			if(p->ide)//非 常数项
+				printf("%dx^%d", p->coe, p->ide);
+			else printf("%d", p->coe);
+		}
 		else
+		{
+			if(p->ide)//非 常数项
 			printf(" %c%dx^%d", (p->coe < 0 ? '-' : '+'), p->coe, p->ide);
+			else printf("%c%d", (p->coe < 0 ? '-' : '+'), p->coe);
+		}
 		p = p->next;
+		i++;
 	}
+}
+
+int correction(int *a, int *b)//用于发现并 提示或改正错误,以指针返回系数和指数
+{
+	scanf("%dX^%d", a, b);
+	return *a;
 }

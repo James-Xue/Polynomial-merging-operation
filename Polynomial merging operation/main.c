@@ -7,13 +7,20 @@ int main(int argc, int *argv[])
 	int cnt = 0;
 	while (1)
 	{
-		switch (menu(&cnt))
-		{
-			case 1:add(&firstPol); break;
-			case 2:printall(&firstPol); exit(0);
-		}
 		system("cls");
+		if (menu(&cnt) == 1)
+		{
+			printf("«Î ‰»Î£∫");
+			add(&firstPol);
+		}
+		else
+		{
+			printall(&firstPol);
+			printf("\n");
+			break;
+		}
 	}
+	free(firstPol);
 	system("pause");
 	return 0;
 }
