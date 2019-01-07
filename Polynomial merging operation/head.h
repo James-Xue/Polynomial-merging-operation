@@ -5,12 +5,13 @@
 
 typedef struct prepol
 {
-	int coe;
-	int ide;
+	double coe;
+	double ide;
 	struct prepol *next;
 }pol;//存放系数和指数
 
-int menu(int *n);
-void add(pol **head);
-void printall(pol **head);
-int correction(int *a,int *b);
+int menu(int *n);//显示菜单 
+void add(pol **head);//添加多项式 
+void printall(pol **head);//输出 
+int correction(double *a,double *b, char *c);//输入
+void deleteall(pol **head); 
